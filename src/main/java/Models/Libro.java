@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Table(name = "libros")
+@Table(name = "libro")
 @Entity
 public class Libro {
 
@@ -15,13 +15,32 @@ public class Libro {
     private String imagen;
     private double precio;
     private String titulo;
+    private Integer existencias;
+    private String anioPublicacion;
 
-    public Libro(String autor, String contenido, String imagen, double precio, String titulo) {
+    public Integer getExistencias() {
+        return existencias;
+    }
+    public void setExistencias(Integer existencias) {
+        this.existencias = existencias;
+    }
+    public String getAnioPublicacion() {
+        return anioPublicacion;
+    }
+    public void setAnioPublicacion(String anioPublicacion) {
+        this.anioPublicacion = anioPublicacion;
+    }
+    
+    public Libro(int id, String autor, String contenido, String imagen, double precio, String titulo,
+        Integer existencias, String anioPublicacion) {
+        this.id = id;
         this.autor = autor;
         this.contenido = contenido;
         this.imagen = imagen;
         this.precio = precio;
         this.titulo = titulo;
+        this.existencias = existencias;
+        this.anioPublicacion = anioPublicacion;
     }
     public Libro() {
     }
@@ -65,7 +84,7 @@ public class Libro {
     @Override
     public String toString() {
         return "Libro [autor=" + autor + ", contenido=" + contenido + ", imagen=" + imagen + ", precio=" + precio
-                + ", tTitulo=" + titulo + "]";
+                + ", titulo=" + titulo + "]";
     }
 
     

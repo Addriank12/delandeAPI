@@ -1,9 +1,12 @@
 package DAO;
 
 import java.util.List;
+
+import jakarta.ejb.Stateless;
 import jakarta.persistence.Query;
 import Models.Libro;
 
+@Stateless
 public class LibroDAO extends GenericDAO<Libro, Integer> {
 
     @Override

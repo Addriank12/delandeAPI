@@ -3,16 +3,31 @@ package Models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "UsersInfo")
+@Table(name = "usersinfo")
 public class UserInfo {
 
     @Id
+    @Email(message = "El correo no es valido.")
+    @NotBlank(message =  "Email obligatorio.")
     private String email;
-    private String direccion;    
+
+    @NotBlank(message =  "Dirección obligatoria.")
+    private String direccion;
+
     private boolean isAdmin;
+
+    @NotBlank(message = "El número de teléfono es obligatorio.")
+    @Pattern(regexp = "\\d+", message = "El número de telefono solo debe tener digitos.")
+    @Size(min = 9, max = 10)
     private String telefono;
+
+    @NotBlank(message = "El nombre de usuario es obligatorio.")
     private String userName;    
 
     public UserInfo() {
@@ -38,7 +53,7 @@ public class UserInfo {
     public void setEmail(String email) {
         this.email = email;
     }
-    public boolean isAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
     public void setAdmin(boolean isAdmin) {

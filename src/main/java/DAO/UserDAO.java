@@ -3,12 +3,11 @@ package DAO;
 import java.util.Optional;
 
 import Models.User;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
-import jakarta.ws.rs.Path;
 
-@Path("/user")
+@Stateless
 public class UserDAO {
 
     @PersistenceContext
@@ -24,7 +23,6 @@ public class UserDAO {
         }
     }
 
-    @Transactional
     public void save(User user) {
         em.persist(user);
     }
