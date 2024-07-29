@@ -36,7 +36,7 @@ public class UserInfoController {
             return Response.ok(userInfo).build();        
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
         }
     }
 
@@ -51,7 +51,7 @@ public class UserInfoController {
             return Response.ok(userInfo).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
         }
     }
 
@@ -65,7 +65,7 @@ public class UserInfoController {
             return Response.ok(userInfo).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
         }
     }
 
@@ -79,7 +79,19 @@ public class UserInfoController {
             return Response.ok().build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+        }
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{email}")
+    @GET
+    public Response get(@PathParam("email") String email){
+        try{            
+            return Response.ok(userInfoDAO.get(email)).build();
+        }
+        catch(Exception ex){
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
         }
     }
 
@@ -90,8 +102,7 @@ public class UserInfoController {
             return Response.ok(userInfoDAO.getAll()).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
         }
     }
-
 }

@@ -24,7 +24,7 @@ public class UserInfo {
 
     @NotBlank(message = "El número de teléfono es obligatorio.")
     @Pattern(regexp = "\\d+", message = "El número de telefono solo debe tener digitos.")
-    @Size(min = 9, max = 10)
+    @Size(min = 9, max = 10, message = "El número de telefono debe tener entre 9 y 10 digitos.")
     private String telefono;
 
     @NotBlank(message = "El nombre de usuario es obligatorio.")

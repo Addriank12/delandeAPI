@@ -34,7 +34,7 @@ public class AuthController  {
     @Path("/register")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public Response register(User user){        
         try {
             ValidatorHelper.validateModel(user);
@@ -46,7 +46,7 @@ public class AuthController  {
             return Response.ok("Usuario registrado.").build();
         }
         catch (Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }        
     }
 
