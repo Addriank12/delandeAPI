@@ -74,7 +74,7 @@ public class Libro {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    public String gettTitulo() {
+    public String getTitulo() {
         return titulo;
     }
     public void setTitulo(String titulo) {
