@@ -17,7 +17,7 @@ public class LibroDAO extends GenericDAO<Libro, String> {
 
     @Override
     public List<Libro> getAll() {
-        String jpql = "SELECT l FROM Libros l";
+        String jpql = "SELECT l FROM Libro l";
 		Query query = em.createQuery(jpql);
 		return query.getResultList();
     }
