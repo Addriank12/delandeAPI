@@ -19,37 +19,37 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("libro")
-@Secured
-@Priority(Priorities.AUTHENTICATION)
 public class LibroController {
 
     @Inject
     LibroDAO libroDAO;
 
-    @GET
+    @GET    
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll(){
         try{
             return Response.ok(libroDAO.getAll()).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
     @GET
-    @Path("{libroId}")
+    @Path("{titulo}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@PathParam("libroId") int libroId){
+    public Response get(@PathParam("titulo") String titulo){
         try{
-            return Response.ok(libroDAO.get(libroId)).build();
+            return Response.ok(libroDAO.get(titulo)).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
     @POST
+    @Secured
+    @Priority(Priorities.AUTHENTICATION)
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response save(Libro libro){
@@ -58,11 +58,13 @@ public class LibroController {
             libroDAO.create(libro);
             return Response.ok(libro).build();            
         } catch (Exception ex) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
     @PUT
+    @Secured
+    @Priority(Priorities.AUTHENTICATION)
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(Libro newLibro){
@@ -71,19 +73,21 @@ public class LibroController {
             libroDAO.update(newLibro);
             return Response.ok(newLibro).build();            
         } catch (Exception ex) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
     @DELETE
-    @Path("{libroId}")
+    @Secured
+    @Priority(Priorities.AUTHENTICATION)
+    @Path("{titulo}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("libroId") int libroId){
+    public Response delete(@PathParam("titulo") String titulo){
         try {      
-            libroDAO.delete(libroId);
+            libroDAO.delete(titulo);
             return Response.ok().build();            
         } catch (Exception ex) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
         }
     }
 

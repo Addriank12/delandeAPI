@@ -7,10 +7,10 @@ import jakarta.persistence.Query;
 import Models.Libro;
 
 @Stateless
-public class LibroDAO extends GenericDAO<Libro, Integer> {
+public class LibroDAO extends GenericDAO<Libro, String> {
 
     @Override
-    public Libro get(Integer param) {
+    public Libro get(String param) {
         Libro entity = em.find(Libro.class, param);
 		return entity;
     }

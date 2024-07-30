@@ -2,19 +2,16 @@ package Models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
-@Table(name = "libro")
 @Entity
 public class Libro {
 
     @Id
-    private int id;    
+    private String titulo;
     private String autor;
     private String contenido;
     private String imagen;
-    private double precio;
-    private String titulo;
+    private double precio;    
     private Integer existencias;
     private String anioPublicacion;
 
@@ -30,27 +27,21 @@ public class Libro {
     public void setAnioPublicacion(String anioPublicacion) {
         this.anioPublicacion = anioPublicacion;
     }
-    
-    public Libro(int id, String autor, String contenido, String imagen, double precio, String titulo,
-        Integer existencias, String anioPublicacion) {
-        this.id = id;
+
+    public Libro(String titulo, String autor, String contenido, String imagen, double precio, Integer existencias,
+            String anioPublicacion) {
+        this.titulo = titulo;
         this.autor = autor;
         this.contenido = contenido;
         this.imagen = imagen;
         this.precio = precio;
-        this.titulo = titulo;
         this.existencias = existencias;
         this.anioPublicacion = anioPublicacion;
     }
+
     public Libro() {
     }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+    
     public String getAutor() {
         return autor;
     }
@@ -83,10 +74,10 @@ public class Libro {
     }
     @Override
     public String toString() {
-        return "Libro [autor=" + autor + ", contenido=" + contenido + ", imagen=" + imagen + ", precio=" + precio
-                + ", titulo=" + titulo + "]";
+        return "Libro [titulo=" + titulo + ", autor=" + autor + ", contenido=" + contenido + ", imagen=" + imagen
+                + ", precio=" + precio + ", existencias=" + existencias + ", anioPublicacion=" + anioPublicacion + "]";
     }
-
+    
     
 
 }

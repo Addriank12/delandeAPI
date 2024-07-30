@@ -36,7 +36,7 @@ public class UserInfoController {
             return Response.ok(userInfo).build();        
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
@@ -51,7 +51,7 @@ public class UserInfoController {
             return Response.ok(userInfo).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
@@ -65,7 +65,7 @@ public class UserInfoController {
             return Response.ok(userInfo).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
@@ -79,7 +79,7 @@ public class UserInfoController {
             return Response.ok().build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
@@ -91,7 +91,7 @@ public class UserInfoController {
             return Response.ok(userInfoDAO.get(email)).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 
@@ -102,7 +102,7 @@ public class UserInfoController {
             return Response.ok(userInfoDAO.getAll()).build();
         }
         catch(Exception ex){
-            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).type(MediaType.TEXT_PLAIN).build();
         }
     }
 }
