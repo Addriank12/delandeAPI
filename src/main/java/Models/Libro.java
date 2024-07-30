@@ -14,7 +14,14 @@ public class Libro {
     private double precio;    
     private Integer existencias;
     private String anioPublicacion;
+    private String genero;
 
+    public String getGenero() {
+        return genero;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
     public Integer getExistencias() {
         return existencias;
     }
@@ -28,7 +35,7 @@ public class Libro {
         this.anioPublicacion = anioPublicacion;
     }
 
-    public Libro(String titulo, String autor, String contenido, String imagen, double precio, Integer existencias,
+    public Libro(String titulo, String autor, String genero, String contenido, String imagen, double precio, Integer existencias,
             String anioPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
@@ -37,11 +44,12 @@ public class Libro {
         this.precio = precio;
         this.existencias = existencias;
         this.anioPublicacion = anioPublicacion;
+        this.genero = genero;
     }
 
     public Libro() {
     }
-    
+
     public String getAutor() {
         return autor;
     }
