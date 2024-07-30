@@ -5,6 +5,7 @@ import java.util.Set;
 
 import Controller.AuthController;
 import Controller.LibroController;
+import Controller.ReservasController;
 import Controller.UserInfoController;
 import Security.JwtRequestFilter;
 import jakarta.ws.rs.ApplicationPath;
@@ -21,6 +22,7 @@ public class delandeApplication extends Application {
         resources.add(AuthController.class);
         resources.add(LibroController.class);
         resources.add(UserInfoController.class);
+        resources.add(ReservasController.class);
         return resources;
     }
 

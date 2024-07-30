@@ -3,21 +3,27 @@ package Models;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Reservas {
 
-    @Id
-    String titulo;    
     
-    @OneToOne
-    @JoinColumn(name = "UserId")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    
+    @ManyToOne
+    @JoinColumn(name = "userId")
     UserInfo user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn( name = "titulo" )
     Libro libro;
 
@@ -25,8 +31,7 @@ public class Reservas {
     Date fechaDevolucion;
     Date fechaRenta;  
 
-    public Reservas(String titulo, UserInfo user, Libro libro, String estado, Date fechaDevolucion, Date fechaRenta) {
-        this.titulo = titulo;
+    public Reservas(UserInfo user, Libro libro, String estado, Date fechaDevolucion, Date fechaRenta) {
         this.user = user;
         this.libro = libro;
         this.estado = estado;
@@ -35,14 +40,16 @@ public class Reservas {
     }
 
     public Reservas() {
-    }   
+    }
 
-    public String getTitulo() {
-        return titulo;
+    public Integer getId() {
+        return id;
     }
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+
+    public void setId(Integer id) {
+        this.id = id;
     }
+
     public UserInfo getUser() {
         return user;
     }
